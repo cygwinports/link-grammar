@@ -8,14 +8,14 @@ labeled links connecting pairs of words. The parser also produces a
 phrases, etc.).
 
 Runtime requirements:
-  cygwin-1.5.24-1
+  cygwin-1.5.24-2
 
 Build requirements:
-  cygwin-1.5.24-1
+  cygwin-1.5.24-2
   autoconf2.5-2.61-1
   automake1.9-1.9.6-2
   binutils-20060817-1
-  cygport-0.3.5-1
+  cygport-0.3.7-1
   gawk-3.1.5-4
   gcc-core-3.4.4-3
   libtool1.5-1.5.23a-2
@@ -31,17 +31,17 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack link-grammar-4.2.4-X-src.tar.bz2
+  unpack link-grammar-4.2.5-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./link-grammar-4.2.4-X.cygport all
+  cygport ./link-grammar-4.2.5-X.cygport all
 
 This will create:
-  /usr/src/liblink-grammar-devel-4.2.4-X.tar.bz2
-  /usr/src/liblink-grammar4-4.2.4-X.tar.bz2
-  /usr/src/link-grammar-4.2.4-X-src.tar.bz2
-  /usr/src/link-grammar-4.2.4-X.tar.bz2
+  /usr/src/liblink-grammar-devel-4.2.5-X.tar.bz2
+  /usr/src/liblink-grammar4-4.2.5-X.tar.bz2
+  /usr/src/link-grammar-4.2.5-X-src.tar.bz2
+  /usr/src/link-grammar-4.2.5-X.tar.bz2
 
 -------------------------------------------
 
@@ -49,11 +49,11 @@ Files included in the binary packages:
 
 (link-grammar)
   /usr/bin/grammar-parse.exe
-  /usr/share/doc/Cygwin/link-grammar-4.2.4.README
-  /usr/share/doc/link-grammar-4.2.4/AUTHORS
-  /usr/share/doc/link-grammar-4.2.4/LICENSE
-  /usr/share/doc/link-grammar-4.2.4/MAINTAINERS
-  /usr/share/doc/link-grammar-4.2.4/README
+  /usr/share/doc/Cygwin/link-grammar-4.2.5.README
+  /usr/share/doc/link-grammar-4.2.5/AUTHORS
+  /usr/share/doc/link-grammar-4.2.5/LICENSE
+  /usr/share/doc/link-grammar-4.2.5/MAINTAINERS
+  /usr/share/doc/link-grammar-4.2.5/README
 
 (liblink-grammar4)
   /usr/bin/cyglink-grammar-4.dll
@@ -125,6 +125,9 @@ Files included in the binary packages:
 ------------------
 
 Port Notes:
+
+----- version 4.2.5-1 -----
+Version bump.
 
 ----- version 4.2.4-1 -----
 Initial release for Cygwin.
