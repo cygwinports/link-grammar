@@ -1,0 +1,11 @@
+--- origsrc/link-grammar-4.5.3/link-grammar/Makefile.am	2009-03-29 12:42:32.000000000 -0500
++++ src/link-grammar-4.5.3/link-grammar/Makefile.am	2009-04-27 18:53:59.732750000 -0500
+@@ -167,7 +167,7 @@ link_parser_LDADD  += $(top_builddir)/li
+ link_parser_LDADD  += $(top_builddir)/link-grammar/minisat/libminisat.la
+ endif
+ 
+-link_parser_LDADD += $(top_builddir)/link-grammar/liblink-grammar.la
++link_parser_LDADD += liblink-grammar.la
+ 
+ if HAVE_EDITLINE
+ link_parser_LDADD += -ledit

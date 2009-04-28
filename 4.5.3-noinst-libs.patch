@@ -1,0 +1,33 @@
+--- origsrc/link-grammar-4.5.3/link-grammar/corpus/Makefile.am	2009-03-04 09:43:48.000000000 -0600
++++ src/link-grammar-4.5.3/link-grammar/corpus/Makefile.am	2009-04-27 19:34:56.014000000 -0500
+@@ -4,7 +4,7 @@ DEFS = @DEFS@ -DVERSION=\"@VERSION@\" -D
+ INCLUDES = -I$(top_srcdir) $(ANSI_CFLAGS) $(SQLITE3_CFLAGS)
+ 
+ if WITH_CORPUS
+-lib_LTLIBRARIES = liblink-corpus.la
++noinst_LTLIBRARIES = liblink-corpus.la
+ endif
+ 
+ liblink_corpus_la_LDFLAGS = -no-undefined
+--- origsrc/link-grammar-4.5.3/link-grammar/minisat/Makefile.am	2008-10-08 15:24:48.000000000 -0500
++++ src/link-grammar-4.5.3/link-grammar/minisat/Makefile.am	2009-04-27 19:30:20.717125000 -0500
+@@ -5,7 +5,7 @@ MINISAT_VERSION_INFO=2:0:0
+ 
+ libminisat_la_LDFLAGS = -version-info $(MINISAT_VERSION_INFO)
+ 
+-lib_LTLIBRARIES = libminisat.la
++noinst_LTLIBRARIES = libminisat.la
+ 
+ libminisat_la_SOURCES = \
+ 	Solver.C Solver.h SolverTypes.h \
+--- origsrc/link-grammar-4.5.3/link-grammar/sat-solver/Makefile.am	2008-10-08 15:25:08.000000000 -0500
++++ src/link-grammar-4.5.3/link-grammar/sat-solver/Makefile.am	2009-04-27 19:30:46.373375000 -0500
+@@ -9,7 +9,7 @@ INCLUDES = -I$(top_srcdir) -I$(top_srcdi
+ 
+ libsat_solver_includedir = $(includedir)/link-grammar $(includedir)/link-grammar/minisat
+ 
+-lib_LTLIBRARIES = libsat-solver.la
++noinst_LTLIBRARIES = libsat-solver.la
+ 
+ libsat_solver_la_SOURCES = \
+ 	clock.hpp         \

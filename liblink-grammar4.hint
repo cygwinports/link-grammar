@@ -1,7 +1,7 @@
 category: Text
-requires: cygwin
+requires: cygwin libgcc1 libhunspell1.2_0
 external-source: link-grammar
-sdesc: "Link Grammar Parser (runtime library)"
+sdesc: "Link Grammar Parser library (runtime)"
 ldesc: "The Link Grammar Parser is a syntactic parser of English, based 
 on link grammar, an original theory of English syntax. Given a sentence, 
 the system assigns to it a syntactic structure, which consists of a set 
