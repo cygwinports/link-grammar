@@ -1,5 +1,5 @@
 category: Text
-requires: cygwin libgcc1 liblink-grammar4
+requires: libgcc1 liblink-grammar4
 sdesc: "Link Grammar Parser"
 ldesc: "The Link Grammar Parser is a syntactic parser of English, based 
 on link grammar, an original theory of English syntax. Given a sentence, 

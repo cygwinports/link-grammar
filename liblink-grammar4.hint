@@ -1,5 +1,5 @@
 category: Text
-requires: cygwin libgcc1 libhunspell1.2_0
+requires: libgcc1 libhunspell1.2_0
 external-source: link-grammar
 sdesc: "Link Grammar Parser library (runtime)"
 ldesc: "The Link Grammar Parser is a syntactic parser of English, based 
