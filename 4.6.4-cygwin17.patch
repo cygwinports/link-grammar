@@ -1,10 +1,20 @@
---- origsrc/link-grammar-4.5.3/link-grammar/utilities.h	2009-04-14 16:02:08.000000000 -0500
-+++ src/link-grammar-4.5.3/link-grammar/utilities.h	2009-04-27 19:02:22.076500000 -0500
-@@ -21,19 +21,12 @@
- #include <stdio.h>
+--- origsrc/link-grammar-4.6.4/link-grammar/utilities.h	2009-06-25 20:32:50.000000000 -0500
++++ src/link-grammar-4.6.4/link-grammar/utilities.h	2009-10-30 15:46:29.492133500 -0500
+@@ -13,10 +13,6 @@
+ #ifndef _LINK_GRAMMAR_UTILITIES_H_
+ #define _LINK_GRAMMAR_UTILITIES_H_
+ 
+-#ifdef __CYGWIN__
+-#define _WIN32 1
+-#endif /* __CYGWIN__ */
+-
+ #ifndef _WIN32
+ #include <langinfo.h>
+ #endif
+@@ -26,10 +22,8 @@
  #include <stdlib.h>
  #include <string.h>
--
+ 
 -#ifndef __CYGWIN__
  #include <wchar.h>
  #include <wctype.h>
@@ -12,17 +22,9 @@
  
  #include "error.h"
  
- 
--#ifdef __CYGWIN__
--#define _WIN32 1
--#endif /* __CYGWIN__ */
--
- #ifdef _WIN32
- #include <windows.h>
- 
-@@ -61,24 +54,6 @@ char * strtok_r (char *s, const char *de
+@@ -66,24 +60,6 @@ char * strtok_r (char *s, const char *de
  #define rand_r(seedp) rand()
- #endif
+ #endif /* _MSC_VER || __MINGW32__ */
  
 -/* CYGWIN on Windows doesn't have UTF8 support, or wide chars ... 
 - * However, MS Visual C appearently does ... 
@@ -40,7 +42,7 @@
 -#define WEOF      EOF
 -#define towlower  tolower
 -#define towupper  toupper
--#endif
+-#endif /* __CYGWIN__ */
 -
  #endif /* _WIN32 */
  
