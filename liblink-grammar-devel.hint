@@ -1,5 +1,5 @@
 category: Text
-requires: liblink-grammar4 libhunspell-devel
+requires: liblink-grammar4 aspell-dev
 external-source: link-grammar
 sdesc: "Link Grammar Parser library (development)"
 ldesc: "The Link Grammar Parser is a syntactic parser of English, based 

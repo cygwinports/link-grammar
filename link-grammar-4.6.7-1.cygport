@@ -3,10 +3,9 @@ HOMEPAGE="http://www.link.cs.cmu.edu/link/"
 SRC_URI="http://www.abisource.com/downloads/${PN}/${PV}/${P}.tar.gz"
 
 PATCH_URI="
-	4.6.4-cygwin17.patch
+	4.6.7-cygwin17.patch
 	4.5.3-m4dir.patch
 	4.5.3-noinst-libs.patch
-	4.5.3-parallel-make.patch
 "
 
 PKG_NAMES="${PN} lib${PN}4 lib${PN}-devel"
@@ -15,6 +14,6 @@ liblink_grammar4_CONTENTS="usr/bin/cyg${PN}-4.dll usr/share/${PN}/"
 liblink_grammar_devel_CONTENTS='usr/include/ usr/lib/'
 
 CYGCONF_ARGS="
-	--disable-java-bindings
+	--disable-hunspell
 	--enable-pthreads
 "

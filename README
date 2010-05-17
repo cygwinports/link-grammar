@@ -8,21 +8,20 @@ labeled links connecting pairs of words. The parser also produces a
 phrases, etc.).
 
 Runtime requirements:
-  cygwin-1.7.0-62
-  libgcc1-4.3.4-1
-  libhunspell1.2_0-1.2.8-10
+  cygwin-1.7.5-1
+  libgcc1-4.3.4-3
+  libaspell15-0.60.5-1
 
 Build requirements:
-  autoconf2.5-2.63-10
-  automake1.10-1.10.2-10
-  binutils-2.19.51-1
-  cygport-0.9.10-1
+  autoconf2.5-2.63-1
+  automake1.10-1.10.3-1
+  binutils-2.20.51-2
+  cygport-0.9.84-1
   gawk-3.1.7-1
-  gcc4-core-4.3.4-1
-  libtool-2.2.7b-14
+  gcc4-core-4.3.4-3
+  libtool-2.2.7b-15
   make-3.81-2
   pkg-config-0.23b-10
-  sed-4.1.5-2
 
 Canonical website:
   http://www.link.cs.cmu.edu/link/
@@ -33,21 +32,25 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack link-grammar-4.6.4-X-src.tar.bz2
+  unpack link-grammar-4.6.7-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./link-grammar-4.6.4-X.cygport all
+  cygport ./link-grammar-4.6.7-X.cygport all
 
 This will create:
-  /usr/src/liblink-grammar-devel-4.6.4-X.tar.bz2
-  /usr/src/liblink-grammar4-4.6.4-X.tar.bz2
-  /usr/src/link-grammar-4.6.4-X-src.tar.bz2
-  /usr/src/link-grammar-4.6.4-X.tar.bz2
+  /usr/src/liblink-grammar-devel-4.6.7-X.tar.bz2
+  /usr/src/liblink-grammar4-4.6.7-X.tar.bz2
+  /usr/src/link-grammar-4.6.7-X-src.tar.bz2
+  /usr/src/link-grammar-4.6.7-X.tar.bz2
 
 -------------------------------------------
 
 Port Notes:
+
+----- version 4.6.7-1 -----
+Version bump.
+Switched hunspell dependency to aspell.
 
 ----- version 4.6.4-1 -----
 Version bump.
