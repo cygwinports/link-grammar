@@ -1,0 +1,42 @@
+inherit java
+
+NAME="link-grammar"
+VERSION=4.7.9
+RELEASE=1
+CATEGORY="Text"
+SUMMARY="Link Grammar Parser"
+DESCRIPTION="The Link Grammar Parser is a syntactic parser of English, based
+on link grammar, an original theory of English syntax. Given a sentence, the
+system assigns to it a syntactic structure, which consists of a set of labeled
+links connecting pairs of words. The parser also produces a 'constituent'
+representation of a sentence (showing noun phrases, verb phrases, etc.)."
+HOMEPAGE="http://www.link.cs.cmu.edu/link/"
+SRC_URI="http://www.abisource.com/downloads/${PN}/${PV}/${P}.tar.gz"
+
+PATCH_URI="
+	4.6.7-cygwin17.patch
+	4.5.3-m4dir.patch
+	4.5.3-noinst-libs.patch
+	4.6.7-java-ldflags.patch
+"
+
+PKG_NAMES="${PN} lib${NAME}4 lib${NAME}-common lib${NAME}-devel java-linkgrammar"
+link_grammar_CONTENTS='usr/bin/*.exe usr/share/doc/ usr/share/man/'
+liblink_grammar4_SUMMARY="${SUMMARY} library (runtime)"
+liblink_grammar4_REQUIRES="liblink-grammar-common"
+liblink_grammar4_CONTENTS="usr/bin/cyg${PN}-4.dll"
+liblink_grammar_common_SUMMARY="${SUMMARY} library (data)"
+liblink_grammar_common_CONTENTS="usr/share/${PN}/"
+liblink_grammar_devel_SUMMARY="${SUMMARY} library (runtime)"
+liblink_grammar_devel_CONTENTS='--exclude=*java* usr/include/ usr/lib/'
+java_linkgrammar_CATEGORY="Java"
+java_linkgrammar_SUMMARY="${SUMMARY} library (Java bindings)"
+java_linkgrammar_CONTENTS="usr/bin/cyg${NAME}-java.dll ${JAVA_DIR#/}"
+PKG_IGNORE="usr/lib/lib${NAME}-java.dll.a"
+
+CYGCONF_ARGS="
+	--disable-hunspell
+	--enable-pthreads
+"
+
+KEEP_LA_FILES="none"

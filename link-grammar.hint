@@ -1,9 +1,0 @@
-category: Text
-requires: libgcc1 liblink-grammar4
-sdesc: "Link Grammar Parser"
-ldesc: "The Link Grammar Parser is a syntactic parser of English, based 
-on link grammar, an original theory of English syntax. Given a sentence, 
-the system assigns to it a syntactic structure, which consists of a set 
-of labeled links connecting pairs of words. The parser also produces a 
-'constituent' representation of a sentence (showing noun phrases, verb 
-phrases, etc.)."
