@@ -1,0 +1,29 @@
+strtok_r is guarded by !__STRICT_ANSI__
+
+--- origsrc/link-grammar-4.7.14/configure.in	2013-10-01 22:44:38.580499100 -0500
++++ src/link-grammar-4.7.14/configure.in	2013-10-01 22:52:00.012747500 -0500
+@@ -87,7 +87,8 @@ CFLAGS="${CFLAGS} -O3"
+ # Final solution: enable std=c99, explitictly turn on BSD and SVID and
+ # GNU, but do NOT turn on POSIX.
+ #
+-if test x${native_win32} = xyes; then
++case "$host_os" in
++cygwin*|mingw*)
+ 	# Vikas says that -std=gnu99 is needed on cygwin/mingw
+ 	CFLAGS="${CFLAGS} -std=gnu99 -D_BSD_SOURCE -D_SVID_SOURCE -D_GNU_SOURCE"
+ 	# Also -- Vikas sets MINGW explicitly, as well as assorted paths.
+@@ -97,10 +98,12 @@ if test x${native_win32} = xyes; then
+ 	# Setting these screws up the remainder of the configure script.
+ 	# CFLAGS="${CFLAGS} -I/usr/include/mingw -D__MINGW32__"
+ 	# LDFLAGS="${LDFLAGS} -L/usr/lib/mingw -lmingwex -lcrtdll -lmsvcrt -lc -Wl,--allow-multiple-definition"
+-else
++;;
++*)
+ 	# Else standard Linux/*BSD environment.
+ 	CFLAGS="${CFLAGS} -std=c99 -D_BSD_SOURCE -D_SVID_SOURCE -D_GNU_SOURCE"
+-fi
++;;
++esac
+ 
+ dnl ====================================================================
+ 

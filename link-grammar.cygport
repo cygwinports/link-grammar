@@ -1,7 +1,7 @@
 inherit java
 
 NAME="link-grammar"
-VERSION=4.7.9
+VERSION=4.7.14
 RELEASE=1
 CATEGORY="Text"
 SUMMARY="Link Grammar Parser"
@@ -11,16 +11,18 @@ system assigns to it a syntactic structure, which consists of a set of labeled
 links connecting pairs of words. The parser also produces a 'constituent'
 representation of a sentence (showing noun phrases, verb phrases, etc.)."
 HOMEPAGE="http://www.link.cs.cmu.edu/link/"
-SRC_URI="http://www.abisource.com/downloads/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="http://www.abisource.com/downloads/link-grammar/${VERSION}/${NAME}-${VERSION}.tar.gz"
 
 PATCH_URI="
 	4.6.7-cygwin17.patch
 	4.5.3-m4dir.patch
 	4.5.3-noinst-libs.patch
 	4.6.7-java-ldflags.patch
+	4.7.14-cflags.patch
+	4.7.14-vpath.patch
 "
 
-PKG_NAMES="${PN} lib${NAME}4 lib${NAME}-common lib${NAME}-devel java-linkgrammar"
+PKG_NAMES="${NAME} lib${NAME}4 lib${NAME}-common lib${NAME}-devel java-linkgrammar"
 link_grammar_CONTENTS='usr/bin/*.exe usr/share/doc/ usr/share/man/'
 liblink_grammar4_SUMMARY="${SUMMARY} library (runtime)"
 liblink_grammar4_REQUIRES="liblink-grammar-common"
