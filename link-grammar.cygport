@@ -1,7 +1,7 @@
 inherit java
 
 NAME="link-grammar"
-VERSION=4.7.14
+VERSION=4.8.6
 RELEASE=1
 CATEGORY="Text"
 SUMMARY="Link Grammar Parser"
@@ -19,16 +19,16 @@ PATCH_URI="
 	4.5.3-noinst-libs.patch
 	4.6.7-java-ldflags.patch
 	4.7.14-cflags.patch
-	4.7.14-vpath.patch
+	4.8.6-link-symbols.patch
 "
 
 PKG_NAMES="${NAME} lib${NAME}4 lib${NAME}-common lib${NAME}-devel java-linkgrammar"
 link_grammar_CONTENTS='usr/bin/*.exe usr/share/doc/ usr/share/man/'
 liblink_grammar4_SUMMARY="${SUMMARY} library (runtime)"
 liblink_grammar4_REQUIRES="liblink-grammar-common"
-liblink_grammar4_CONTENTS="usr/bin/cyg${PN}-4.dll"
+liblink_grammar4_CONTENTS="usr/bin/cyg${NAME}-4.dll"
 liblink_grammar_common_SUMMARY="${SUMMARY} library (data)"
-liblink_grammar_common_CONTENTS="usr/share/${PN}/"
+liblink_grammar_common_CONTENTS="usr/share/${NAME}/"
 liblink_grammar_devel_SUMMARY="${SUMMARY} library (runtime)"
 liblink_grammar_devel_CONTENTS='--exclude=*java* usr/include/ usr/lib/'
 java_linkgrammar_CATEGORY="Java"
@@ -37,7 +37,6 @@ java_linkgrammar_CONTENTS="usr/bin/cyg${NAME}-java.dll ${JAVA_DIR#/}"
 PKG_IGNORE="usr/lib/lib${NAME}-java.dll.a"
 
 CYGCONF_ARGS="
-	--disable-hunspell
 	--enable-pthreads
 "
 
