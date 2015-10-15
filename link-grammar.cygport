@@ -1,8 +1,6 @@
-inherit java
-
 NAME="link-grammar"
 VERSION=4.8.6
-RELEASE=1
+RELEASE=2
 CATEGORY="Text"
 SUMMARY="Link Grammar Parser"
 DESCRIPTION="The Link Grammar Parser is a syntactic parser of English, based
@@ -22,7 +20,7 @@ PATCH_URI="
 	4.8.6-link-symbols.patch
 "
 
-PKG_NAMES="${NAME} lib${NAME}4 lib${NAME}-common lib${NAME}-devel java-linkgrammar"
+PKG_NAMES="${NAME} lib${NAME}4 lib${NAME}-common lib${NAME}-devel"
 link_grammar_CONTENTS='usr/bin/*.exe usr/share/doc/ usr/share/man/'
 liblink_grammar4_SUMMARY="${SUMMARY} library (runtime)"
 liblink_grammar4_REQUIRES="liblink-grammar-common"
@@ -37,6 +35,7 @@ java_linkgrammar_CONTENTS="usr/bin/cyg${NAME}-java.dll ${JAVA_DIR#/}"
 PKG_IGNORE="usr/lib/lib${NAME}-java.dll.a"
 
 CYGCONF_ARGS="
+	--disable-java-bindings
 	--enable-pthreads
 "
 
