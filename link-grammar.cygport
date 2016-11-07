@@ -1,6 +1,8 @@
+inherit perl python3
+
 NAME="link-grammar"
-VERSION=4.8.6
-RELEASE=2
+VERSION=5.3.11
+RELEASE=1
 CATEGORY="Text"
 SUMMARY="Link Grammar Parser"
 DESCRIPTION="The Link Grammar Parser is a syntactic parser of English, based
@@ -10,33 +12,41 @@ links connecting pairs of words. The parser also produces a 'constituent'
 representation of a sentence (showing noun phrases, verb phrases, etc.)."
 HOMEPAGE="http://www.link.cs.cmu.edu/link/"
 SRC_URI="http://www.abisource.com/downloads/link-grammar/${VERSION}/${NAME}-${VERSION}.tar.gz"
-
 PATCH_URI="
-	4.6.7-cygwin17.patch
-	4.5.3-m4dir.patch
-	4.5.3-noinst-libs.patch
-	4.6.7-java-ldflags.patch
-	4.7.14-cflags.patch
-	4.8.6-link-symbols.patch
+	5.3.11-cygwin-ftm.patch
+	5.3.11-no-undefined.patch
 "
 
-PKG_NAMES="${NAME} lib${NAME}4 lib${NAME}-common lib${NAME}-devel"
-link_grammar_CONTENTS='usr/bin/*.exe usr/share/doc/ usr/share/man/'
-liblink_grammar4_SUMMARY="${SUMMARY} library (runtime)"
-liblink_grammar4_REQUIRES="liblink-grammar-common"
-liblink_grammar4_CONTENTS="usr/bin/cyg${NAME}-4.dll"
+PKG_NAMES="${NAME} lib${NAME}5 lib${NAME}-common lib${NAME}-devel perl-clinkgrammar python3-linkgrammar"
+link_grammar_CONTENTS='usr/bin/*.exe usr/share/doc/'
+liblink_grammar5_SUMMARY="${SUMMARY} library (runtime)"
+liblink_grammar5_REQUIRES="liblink-grammar-common"
+liblink_grammar5_CONTENTS="usr/bin/cyg${NAME}-5.dll"
 liblink_grammar_common_SUMMARY="${SUMMARY} library (data)"
 liblink_grammar_common_CONTENTS="usr/share/${NAME}/"
 liblink_grammar_devel_SUMMARY="${SUMMARY} library (runtime)"
-liblink_grammar_devel_CONTENTS='--exclude=*java* usr/include/ usr/lib/'
-java_linkgrammar_CATEGORY="Java"
-java_linkgrammar_SUMMARY="${SUMMARY} library (Java bindings)"
-java_linkgrammar_CONTENTS="usr/bin/cyg${NAME}-java.dll ${JAVA_DIR#/}"
-PKG_IGNORE="usr/lib/lib${NAME}-java.dll.a"
+liblink_grammar_devel_CONTENTS="
+	usr/include/link-grammar/
+	usr/lib/liblink-grammar.dll.a
+	usr/lib/pkgconfig/link-grammar.pc
+"
+perl_clinkgrammar_CONTENTS="${PERL_VENDORARCH#/}/clinkgrammar.*"
+python3_linkgrammar_CONTENTS="${PYTHON3_SITELIB#/}/linkgrammar*"
 
 CYGCONF_ARGS="
 	--disable-java-bindings
+	--enable-perl-bindings
+	--enable-python3-bindings
 	--enable-pthreads
+	PYTHON=${PYTHON3}
 "
+
+src_compile() {
+	cd ${S}
+	cygautoreconf
+	cd ${B}
+	cygconf
+	cygmake
+}
 
 KEEP_LA_FILES="none"

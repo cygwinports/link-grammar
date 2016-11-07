@@ -1,0 +1,19 @@
+--- origsrc/link-grammar-5.3.11/configure.ac	2016-09-26 16:50:34.000000000 -0500
++++ src/link-grammar-5.3.11/configure.ac	2016-11-05 23:15:07.286331300 -0500
+@@ -169,7 +169,7 @@ if test x${apple_osx} = xyes; then
+ else
+ 	# Else standard Linux/*BSD environment.
+ 	CFLAGS="${CFLAGS} -std=c11 -D_BSD_SOURCE -D_SVID_SOURCE -D_GNU_SOURCE"
+-	CXXFLAGS="${CXXFLAGS} -std=c++11"
++	CXXFLAGS="${CXXFLAGS} -std=c++11 -D_BSD_SOURCE -D_SVID_SOURCE -D_GNU_SOURCE"
+ fi
+ fi
+ 
+@@ -177,6 +177,7 @@ fi
+ # is used there instead, but _BSD_SOURCE and _SVID_SOURCE can still be
+ # specified (no effect). So just add it.
+ CFLAGS="${CFLAGS} -D_DEFAULT_SOURCE"
++CXXFLAGS="${CXXFLAGS} -D_DEFAULT_SOURCE"
+ 
+ # ====================================================================
+ # Debugging

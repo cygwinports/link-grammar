@@ -1,0 +1,51 @@
+--- origsrc/link-grammar-5.3.11/bindings/perl/Makefile.am	2016-09-13 13:44:33.000000000 -0500
++++ src/link-grammar-5.3.11/bindings/perl/Makefile.am	2016-11-06 13:02:43.776483000 -0600
+@@ -43,7 +43,8 @@ clinkgrammar_la_CPPFLAGS = \
+    -I$(top_srcdir)         \
+    -I$(top_builddir)
+ 
+-clinkgrammar_la_LDFLAGS = -version-info @VERSION_INFO@ $(PERL_LDFLAGS) -module -no-undefined
++PERL_LDFLAGS = -L`perl -MConfig -e 'print $$Config{archlib};'`/CORE -lperl
++clinkgrammar_la_LDFLAGS = -avoid-version $(PERL_LDFLAGS) -module -no-undefined
+ clinkgrammar_la_LIBADD = $(top_builddir)/link-grammar/liblink-grammar.la
+ 
+ if HAVE_HUNSPELL
+--- origsrc/link-grammar-5.3.11/link-grammar/Makefile.am	2016-09-26 16:50:34.000000000 -0500
++++ src/link-grammar-5.3.11/link-grammar/Makefile.am	2016-11-06 11:22:44.425769400 -0600
+@@ -165,6 +165,10 @@ liblink_grammar_la_SOURCES =        \
+ 	wordgraph.h                      \
+ 	word-utils.h
+ 
++if WITH_SAT_SOLVER
++liblink_grammar_la_SOURCES += dummy.cpp
++endif
++
+ liblink_grammar_includedir = $(includedir)/link-grammar
+ liblink_grammar_include_HEADERS =   \
+ 	link-features.h                  \
+--- origsrc/link-grammar-5.3.11/link-grammar/corpus/Makefile.am	2016-09-13 13:44:33.000000000 -0500
++++ src/link-grammar-5.3.11/link-grammar/corpus/Makefile.am	2016-11-05 22:59:39.809771000 -0500
+@@ -8,7 +8,7 @@ DEFS = @DEFS@ -DVERSION=\"@VERSION@\" -D
+ AM_CPPFLAGS = -I$(top_srcdir)/link-grammar $(WARN_CFLAGS) $(SQLITE3_CFLAGS)
+ 
+ if WITH_CORPUS
+-lib_LTLIBRARIES = liblink-corpus.la
++noinst_LTLIBRARIES = liblink-corpus.la
+ endif
+ 
+ # Undefined symbols are allowed, as otherwise there is a circular
+--- origsrc/link-grammar-5.3.11/link-grammar/dummy.cpp	1969-12-31 18:00:00.000000000 -0600
++++ src/link-grammar-5.3.11/link-grammar/dummy.cpp	2016-11-06 11:23:21.820901000 -0600
+@@ -0,0 +1 @@
++/* This exists solely to force libtool to link with g++ */
+--- origsrc/link-grammar-5.3.11/link-grammar/minisat/Makefile.am	2016-09-26 16:50:34.000000000 -0500
++++ src/link-grammar-5.3.11/link-grammar/minisat/Makefile.am	2016-11-05 22:59:58.064203000 -0500
+@@ -3,7 +3,7 @@ MINISAT_VERSION_INFO=2:2:0
+ 
+ libminisat_la_LDFLAGS = -version-info $(MINISAT_VERSION_INFO) -no-undefined
+ 
+-lib_LTLIBRARIES = libminisat.la
++noinst_LTLIBRARIES = libminisat.la
+ 
+ libminisat_la_SOURCES = \
+ 	minisat/core/Dimacs.h \
