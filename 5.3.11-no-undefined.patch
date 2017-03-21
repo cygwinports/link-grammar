@@ -38,14 +38,3 @@
 +++ src/link-grammar-5.3.11/link-grammar/dummy.cpp	2016-11-06 11:23:21.820901000 -0600
 @@ -0,0 +1 @@
 +/* This exists solely to force libtool to link with g++ */
---- origsrc/link-grammar-5.3.11/link-grammar/minisat/Makefile.am	2016-09-26 16:50:34.000000000 -0500
-+++ src/link-grammar-5.3.11/link-grammar/minisat/Makefile.am	2016-11-05 22:59:58.064203000 -0500
-@@ -3,7 +3,7 @@ MINISAT_VERSION_INFO=2:2:0
- 
- libminisat_la_LDFLAGS = -version-info $(MINISAT_VERSION_INFO) -no-undefined
- 
--lib_LTLIBRARIES = libminisat.la
-+noinst_LTLIBRARIES = libminisat.la
- 
- libminisat_la_SOURCES = \
- 	minisat/core/Dimacs.h \

@@ -1,7 +1,7 @@
-inherit perl python3
+inherit perl python2 python3
 
 NAME="link-grammar"
-VERSION=5.3.11
+VERSION=5.3.15
 RELEASE=1
 CATEGORY="Text"
 SUMMARY="Link Grammar Parser"
@@ -17,7 +17,8 @@ PATCH_URI="
 	5.3.11-no-undefined.patch
 "
 
-PKG_NAMES="${NAME} lib${NAME}5 lib${NAME}-common lib${NAME}-devel perl-clinkgrammar python3-linkgrammar"
+PKG_NAMES="${NAME} lib${NAME}5 lib${NAME}-common lib${NAME}-devel
+	   perl-clinkgrammar python2-linkgrammar python3-linkgrammar"
 link_grammar_CONTENTS='usr/bin/*.exe usr/share/doc/'
 liblink_grammar5_SUMMARY="${SUMMARY} library (runtime)"
 liblink_grammar5_REQUIRES="liblink-grammar-common"
@@ -31,14 +32,14 @@ liblink_grammar_devel_CONTENTS="
 	usr/lib/pkgconfig/link-grammar.pc
 "
 perl_clinkgrammar_CONTENTS="${PERL_VENDORARCH#/}/clinkgrammar.*"
+python2_linkgrammar_CONTENTS="${PYTHON2_SITELIB#/}/linkgrammar*"
 python3_linkgrammar_CONTENTS="${PYTHON3_SITELIB#/}/linkgrammar*"
 
 CYGCONF_ARGS="
 	--disable-java-bindings
 	--enable-perl-bindings
-	--enable-python3-bindings
+	--enable-python-bindings
 	--enable-pthreads
-	PYTHON=${PYTHON3}
 "
 
 src_compile() {
