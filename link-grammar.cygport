@@ -1,30 +1,29 @@
 inherit perl python2 python3
 
 NAME="link-grammar"
-VERSION=5.3.15
+VERSION=5.3.16
 RELEASE=1
 CATEGORY="Text"
 SUMMARY="Link Grammar Parser"
-DESCRIPTION="The Link Grammar Parser is a syntactic parser of English, based
-on link grammar, an original theory of English syntax. Given a sentence, the
+DESCRIPTION="The Link Grammar Parser is a syntactic parser of natural languages,
+based on link grammar, an original theory of English syntax. Given a sentence, the
 system assigns to it a syntactic structure, which consists of a set of labeled
 links connecting pairs of words. The parser also produces a 'constituent'
 representation of a sentence (showing noun phrases, verb phrases, etc.)."
 HOMEPAGE="http://www.link.cs.cmu.edu/link/"
 SRC_URI="http://www.abisource.com/downloads/link-grammar/${VERSION}/${NAME}-${VERSION}.tar.gz"
 PATCH_URI="
-	5.3.11-cygwin-ftm.patch
 	5.3.11-no-undefined.patch
 "
 
-PKG_NAMES="${NAME} lib${NAME}5 lib${NAME}-common lib${NAME}-devel
+PKG_NAMES="${NAME} lib${NAME}5 lib${NAME}-devel
 	   perl-clinkgrammar python2-linkgrammar python3-linkgrammar"
 link_grammar_CONTENTS='usr/bin/*.exe usr/share/doc/'
+liblink_grammar5_CATEGORY="Libs"
 liblink_grammar5_SUMMARY="${SUMMARY} library (runtime)"
-liblink_grammar5_REQUIRES="liblink-grammar-common"
+liblink_grammar5_REQUIRES="link-grammar-en"
 liblink_grammar5_CONTENTS="usr/bin/cyg${NAME}-5.dll"
-liblink_grammar_common_SUMMARY="${SUMMARY} library (data)"
-liblink_grammar_common_CONTENTS="usr/share/${NAME}/"
+liblink_grammar_devel_CATEGORY="Libs"
 liblink_grammar_devel_SUMMARY="${SUMMARY} library (runtime)"
 liblink_grammar_devel_CONTENTS="
 	usr/include/link-grammar/
@@ -35,7 +34,18 @@ perl_clinkgrammar_CONTENTS="${PERL_VENDORARCH#/}/clinkgrammar.*"
 python2_linkgrammar_CONTENTS="${PYTHON2_SITELIB#/}/linkgrammar*"
 python3_linkgrammar_CONTENTS="${PYTHON3_SITELIB#/}/linkgrammar*"
 
+for lang in ady:Adyghe amy:Ami any:Anyin ar:Arabic de:German en:English \
+	    fa:Persian he:Hebrew id:Indonesian kz:Kazakh lt:Lithuanian \
+	    ru:Russian tr:Turkish vn:Vietnamese
+do
+PKG_NAMES+=" ${NAME}-${lang%:*}"
+declare link_grammar_${lang%:*}_SUMMARY="${lang#*:} ${SUMMARY} dictionary"
+declare link_grammar_${lang%:*}_CONTENTS="usr/share/${NAME}/${lang%:*}/"
+done
+link_grammar_en_OBSOLETES="liblink-grammar-common"
+
 CYGCONF_ARGS="
+	--with-hunspell-dictdir=/usr/share/myspell
 	--disable-java-bindings
 	--enable-perl-bindings
 	--enable-python-bindings
@@ -49,5 +59,3 @@ src_compile() {
 	cygconf
 	cygmake
 }
-
-KEEP_LA_FILES="none"
