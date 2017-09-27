@@ -2,7 +2,7 @@ inherit perl python2 python3
 
 NAME="link-grammar"
 VERSION=5.3.16
-RELEASE=1
+RELEASE=2
 CATEGORY="Text"
 SUMMARY="Link Grammar Parser"
 DESCRIPTION="The Link Grammar Parser is a syntactic parser of natural languages,
@@ -50,6 +50,7 @@ CYGCONF_ARGS="
 	--enable-perl-bindings
 	--enable-python-bindings
 	--enable-pthreads
+	PERL_EXT_LIB=${PERL_VENDORARCH}
 "
 
 src_compile() {
